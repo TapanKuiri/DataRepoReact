@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+
+ /* a.active{
+} */
+/* <button className='p-1 rounded-lg border-1 font-semibold hover:bg-black text-black hover:text-white'>Upload Here</button> */
+a.active hr{
+  display: block;
+}
