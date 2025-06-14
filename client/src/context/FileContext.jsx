@@ -9,7 +9,6 @@ const FileContextProvider = (props) => {
 
   // console.log(files)
 
-  // const [token, setToken] = useState('');
   const [files, setFiles]  = useState([]);
   // const [firstChar, setFirstChar] = useState('');
   const [firstChar, setFirstChar] = useState(localStorage.getItem('firstChar') || '');
