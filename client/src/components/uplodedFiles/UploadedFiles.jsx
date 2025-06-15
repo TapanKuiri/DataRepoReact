@@ -99,7 +99,7 @@ export const UploadedFiles = () => {
         {
             files.map((item, index)=>( 
 
-                <ul key={index} className='flex justify-between gap-3 border-t h-14'>
+                <ul key={index} className='flex justify-between gap-3 border-t h-auto'>
                     <li className='w-1/6 justify-center text-center'>{item.fileName}</li>
                     <li className='w-1/6 justify-center text-center'>{item.type}</li>
                     <li className='w-1/6 justify-center text-center'>{item.size}</li>
