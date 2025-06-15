@@ -99,17 +99,16 @@ export const UploadedFiles = () => {
         {
             files.map((item, index)=>( 
 
-                <ul key={index} className='flex justify-between gap-3 border-t h-auto'>
-                    <li className='w-1/6 justify-center text-center'>{item.fileName}</li>
-                    <li className='w-1/6 justify-center text-center'>{item.type}</li>
-                    <li className='w-1/6 justify-center text-center'>{item.size}</li>
-                    <li className='w-1/6 flex justify-center items-center'>
+                <ul key={index} className='flex w-full  justify-between items-center border-t min-h-10 h-auto'>
+                    <li className='w-1/5 justify-center   text-center'>{item.fileName}</li>
+                    <li className='w-1/5 justify-center  text-center'>{item.size}</li>
+                    <li className='w-1/5 flex justify-center items-center'>
                         <img onClick={()=>viewfile(item._id)} src={assets.view} alt=""
                         className='w-6 h-6   text-white rounded-md shadow-md transition duration-200 ease-in-out
                         hover:bg-blue-700 hover:shadow-lg hover:scale-105
                         active:ring-4 active:ring-blue-300 focus:outline-none'   />
                     </li>
-                    <li className='w-1/6 flex justify-center items-center '>
+                    <li className='w-1/5 flex justify-center items-center '>
                         <img onClick={()=>deleteFile(item._id)} src={assets.deletef} alt="" 
                         className='w-6 h-6  text-white rounded-md shadow-md transition duration-200 ease-in-out
                         hover:bg-blue-300 hover:shadow-lg hover:scale-105

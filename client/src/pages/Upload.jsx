@@ -67,14 +67,13 @@ export const Upload = () => {
         </div>
       </div>
 
-      <div className='bg-amber-300 w-full  justify-center text-center  p-2 mx-4'>
+      <div className='bg-amber-300 w-full  justify-center text-center  p-2'>
         <ul className='flex '>
-          <li className='w-1/6'>Name</li>
-            <li className='w-1/6'>Type</li>
-            <li className='w-1/6'>Size</li>
-            <li className='w-1/6'>View</li>
-            <li className='w-1/6'>Delete</li>
-            <li className='w-1/6'>Download</li>
+          <li className='w-1/5'>Name</li>
+            <li className='w-1/5'>Size</li>
+            <li className='w-1/5'>View</li>
+            <li className='w-1/5'>Delete</li>
+            <li className='w-1/5'>Download</li>
         </ul>
       </div>
         <UploadedFiles />

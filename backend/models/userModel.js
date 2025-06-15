@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema({
   files: [
     {
       fileName: { type: String },
-      type: { type: String },
       size: { type: String },
       fileUrl: { type: String },
       uploadedAt: { type: Date, default: Date.now }

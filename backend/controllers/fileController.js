@@ -6,14 +6,12 @@ const uploadFile = async (req, res) => {
 
     const {userId} = req.body;    
     const fileName = req.file.originalname;
-    const type = req.file.mimetype;
     const size = (req.file.size / 1024).toFixed(2) + ' KB';
     const fileUrl = ((await cloudinary.uploader.upload(req.file.path, {resource_type: 'auto'})).secure_url);
 
     // 3. Create file object
     const fileData = {
        fileName: fileName,
-       type:type,
        size:size,
        fileUrl:fileUrl
     };

@@ -3,17 +3,21 @@ import { Link, NavLink } from 'react-router-dom'
 import {assets} from '../../assets/assets'
 import { useContext } from 'react'
 import {FileContext} from '../../context/FileContext'
+import { useNavigate } from 'react-router-dom'
 
 export const NavbarLayout = () => {
     const [visible, setVisible] = React.useState(false);
+    const navigate = useNavigate();
 
     const {token, setToken, firstChar, setFirstChar} = useContext(FileContext);
     function logoutUser() {
         localStorage.removeItem('user');
         localStorage.removeItem('token');
+        console.log("firstChar1: ", firstChar);
         setFirstChar(null);
+        console.log("firstChar2: ", firstChar);
         setToken(null);   
-        Navigate('/')   
+        navigate('/')   
         // window.location.href = '/login';
     }
   return (
@@ -48,11 +52,13 @@ export const NavbarLayout = () => {
            
             <div className="absolute right-0 mt-20 pt-10 hidden group-hover:block transition-all delay-300 duration-300 ease-in-out">
                 <div className="flex flex-col gap-2 py-3 px-5 bg-white rounded-xl shadow-xl min-w-[140px] border border-gray-200 hover:scale-[1.01]">
-                    <Link
-                    onClick={logoutUser}
+                   <Link 
                     to="/"
                     className="text-gray-700 hover:text-blue-600 transition duration-200 font-medium"
-                    >
+                    onClick={(e) => {
+                        e.preventDefault();
+                        logoutUser();
+                    }}>
                     Log Out
                     </Link>
 
