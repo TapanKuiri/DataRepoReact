@@ -8,7 +8,7 @@ import axios from 'axios';
 import {jwtDecode}  from 'jwt-decode';
 
 export const Login = () => {
-  const {token, setToken, backendUrl, firstChar, setFirstChar} = useContext(FileContext)
+  const {setToken, backendUrl, setFirstChar} = useContext(FileContext)
   const [currentState, setCurrentState ] = useState('Login');
 
   const [email, setEmail] = useState('');
@@ -27,13 +27,13 @@ export const Login = () => {
              toast.success("login successfull");
              const token = response.data.token;
             const decoded = jwtDecode(token);
-            const firstChar = decoded.name[0].toUpperCase();
+            const char = decoded.name[0].toUpperCase();
 
             setToken(token);
-            setFirstChar(firstChar);
+            setFirstChar(char);
 
-             localStorage.setItem('token', token);
-            localStorage.setItem('firstChar', firstChar);
+            localStorage.setItem('token', token);
+            localStorage.setItem('firstChar', char);
             navigate('/')
               
             }else{
@@ -43,19 +43,19 @@ export const Login = () => {
       }else{
 
           const response = await axios.post(backendUrl+'/api/user/login', {email, password});
-          console.log("rsponse: ",response.data);
+          // console.log("rsponse: ",response.data);
           
           if(response.data.success){
              toast.success('Login successful');
               const token = response.data.token;
               const decoded = jwtDecode(token);
-              const firstChar = decoded.name[0].toUpperCase();
+              const char = decoded.name[0].toUpperCase();
 
               setToken(token);
-              setFirstChar(firstChar);
+              setFirstChar(char);
 
               localStorage.setItem('token', token);
-              localStorage.setItem('firstChar', firstChar);
+              localStorage.setItem('firstChar', char);
 
               navigate('/upload');
           

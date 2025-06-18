@@ -13,12 +13,10 @@ export const NavbarLayout = () => {
     function logoutUser() {
         localStorage.removeItem('user');
         localStorage.removeItem('token');
-        console.log("firstChar1: ", firstChar);
+        localStorage.removeItem('firstChar');
         setFirstChar(null);
-        console.log("firstChar2: ", firstChar);
         setToken(null);   
         navigate('/')   
-        // window.location.href = '/login';
     }
   return (
     <div className='bg-gray-300 w-full flex justify-between items-center px-4 p-2'>
