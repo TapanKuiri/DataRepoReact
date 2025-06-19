@@ -11,8 +11,7 @@ export const UploadedFiles = () => {
     // console.log("token; ", token)
      const showAllfiles =async ()=>{
           try{
-            const response = await axios.get(`${backendUrl}/api/user/files`, {headers: { token }});
-            console.log(response.data);
+            const response = await axios.post(`${backendUrl}/api/user/files`,{}, {headers: { token }});
             if(response.data.success){
                 setFiles(response.data.files);
                 // console.log(files);
