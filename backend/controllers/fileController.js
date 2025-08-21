@@ -49,26 +49,37 @@ const deleteFile = async(req, res)=>{
   }
 }
 
-const viewFile = async(req, res)=>{
-    // console.log("viewfile is run");
-    try{
 
-      const {userId,  fileId} = req.body;
-      const userData = await userModel.findById(userId);
-      if (!userData) return res.status(404).json({ success: false, message: "User not found" });
-  
-      const userFile = userData.files;
-      const oneFile = userFile.find(file => file._id.toString() === fileId);
-      if (!oneFile) return res.status(404).json({ success: false, message: "File not found" });
-  
-      // console.log(oneFile);
-      res.json({ success: true, fileUrl: oneFile.fileUrl });
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ success: false, message: "Server error" });
+const viewFile = async (req, res) => {
+  console.log("viewFile is running...");
+  try {
+    const { userId, fileId } = req.body;
+
+    // find user
+    const userData = await userModel.findById(userId);
+    if (!userData) {
+      return res.status(404).json({ success: false, message: "User not found" });
     }
 
-}
+    const userFiles = userData.files;
+    console.log("User files:", userFiles);
+
+    // find one file inside user's files
+    const oneFile = userFiles.find(file => file._id.toString() === fileId);
+
+    if (!oneFile) {
+      return res.status(404).json({ success: false, message: "File not found" });
+    }
+ 
+
+    // return file URL
+    res.json({ success: true, fileUrl: oneFile.fileUrl });
+
+  } catch (err) {
+    console.error("Error in viewFile:", err);
+    res.status(500).json({ success: false, message: "Server error" });
+  }
+};
 
 
 const downloadFile = async(req, res)=>{
@@ -78,8 +89,12 @@ const downloadFile = async(req, res)=>{
       const userData = await userModel.findById(userId);
       if (!userData) return res.status(404).json({ success: false, message: "User not found" });
   
-      const userFile = userData.files;
-      const oneFile = userFile.find(file => file._id.toString() === fileId);
+      const userFiles = userData.files;
+       const oneFile = userFiles.find(file => {
+          if (!file || !file._id) return false;  // safeguard
+          return file._id.toString() === fileId;
+      });
+      // const oneFile = userFile.find(file => file._id.toString() === fileId);
       if (!oneFile) return res.status(404).json({ success: false, message: "File not found" });
   
       // console.log(oneFile);

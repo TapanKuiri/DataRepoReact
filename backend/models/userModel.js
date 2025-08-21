@@ -1,20 +1,29 @@
 import mongoose from "mongoose";
-const userSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  files: [
-    {
-      fileName: { type: String },
-      size: { type: String },
-      fileUrl: { type: String },
-      uploadedAt: { type: Date, default: Date.now }
-    }
-  ]
-});
 
-mongoose.models.User && delete mongoose.models.User;
+const fileSchema = new mongoose.Schema(
+  {
+    fileName: { type: String, required: true },
+    size: { type: String, required: true },
+    fileUrl: { type: String, required: true },
+    uploadedAt: { type: Date, default: Date.now }
+  },
+     
+);
 
-const userModel = mongoose.model('User', userSchema);
+const userSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true, trim: true },  // trim remove leading/trailing spaces
+    email: { type: String, required: true, unique: true, lowercase: true, trim: true },
+    password: { type: String, required: true },
+    files: [fileSchema]
+  },
+  { timestamps: true } // Automatically manage 'createdAt' and 'updatedAt' fields
+);
 
-export default userModel;
+// Avoid OverwriteError in dev (use this only in development)
+const User = mongoose.models.User || mongoose.model("User", userSchema);
+
+export default User;
+
+
+ 

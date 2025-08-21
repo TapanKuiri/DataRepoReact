@@ -43,7 +43,7 @@ export const Login = () => {
       }else{
 
           const response = await axios.post(backendUrl+'/api/user/login', {email, password});
-          // console.log("rsponse: ",response.data);
+          console.log("rsponse: ",response.data);
           
           if(response.data.success){
              toast.success('Login successful');

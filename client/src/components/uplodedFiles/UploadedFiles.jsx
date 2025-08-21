@@ -26,7 +26,9 @@ export const UploadedFiles = () => {
         //   console.log(id, token);
         try{
             const response = await axios.post(backendUrl+'/api/file/view', {fileId}, {headers: {token}})
-            // console.log(response.data);
+            // const response = await axios.post(`${backendUrl}/api/file/view?fileId=${fileId}`, {headers: {token}})
+            console.log("view file response: ", response.data);
+            console.log(response.data);
             if(response.data.success){
                 const fileUrl = response.data.fileUrl;
                 window.open(fileUrl, '_blank'); // Open Cloudinary image in a new tab

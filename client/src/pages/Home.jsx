@@ -7,7 +7,7 @@ export const Home = () => {
     const {token} = useContext(FileContext);
   return (
     <div className='bg-white flex w-full h-screen items-center justify-center  '>
-  <div className='flex flex-col sm:flex-row-reverse items-center justify-between w-full h-screen'>
+    <div className='flex flex-col sm:flex-row-reverse items-center justify-between w-full h-screen'>
 
     {/* left part */}
     <div className='flex flex-col p-8 pt-1 items-center justify-center mt-7 gap-5 w-full sm:w-1/2'>
