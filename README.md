@@ -54,3 +54,39 @@ Built with **React, Node.js, Express, MongoDB, Cloudinary**, and styled using **
 <img width="1900" height="949" alt="image" src="https://github.com/user-attachments/assets/734fd0a6-4b75-454e-8c4c-873956e6ac8c" />
 
 
+
+## 📂 Project Structure  
+
+FILENEST
+├── backend # Backend code (Node.js + Express)
+│ ├── config # Configuration files (DB, Cloudinary)
+│ ├── controllers # Route controllers (fileController, userController)
+│ ├── middleware # Middlewares (authUser, multer)
+│ ├── models # MongoDB models (userModel)
+│ ├── routes # API routes
+│ ├── server.js # Entry point of backend server
+│ ├── .env # Environment variables (ignored in Git)
+│ ├── package.json # Backend dependencies
+│ └── vercel.json # Deployment config (if using Vercel)
+│
+├── client # Frontend code (React + Vite)
+│ ├── public # Static files
+│ ├── src # Main source folder
+│ │ ├── assets # Images, icons, static assets
+│ │ ├── components # Reusable UI components
+│ │ ├── context # React Context (state management)
+│ │ ├── pages # Application pages
+│ │ ├── App.css # Global styles
+│ │ ├── App.jsx # Root React component
+│ │ ├── index.css # Tailwind & global CSS
+│ │ └── main.jsx # Entry point of React app
+│ ├── .env # Frontend environment variables
+│ ├── package.json # Frontend dependencies
+│ ├── vite.config.js # Vite config file
+│ └── vercel.json # Deployment config (if using Vercel)
+│
+├── .gitignore # Git ignore rules
+├── README.md # Project documentation
+└── package-lock.json # Lock file for dependencies
+
+
